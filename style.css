@@ -1,0 +1,29 @@
+.d-none {
+    display: none;
+}
+
+#add {
+    float: right;
+}
+
+.btn-light {
+    border-radius: 50%;
+}
+
+img {
+    width: 100px;
+}
+
+button#valid {
+    border: 1px solid rgb(45, 45, 246);
+    background-color: rgb(45, 45, 246);
+    color: white;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 1rem;
+    border-radius: .25rem;
+}
+
+.d-nonne {
+    display: none;
+}

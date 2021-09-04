@@ -1,0 +1,16 @@
+{
+    "name": "hello_word",
+    "version": "1.0.0",
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^13.2.3"
+    },
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "datatables.net-dt": "^1.1.0",
+        "mysql": "^2.18.1"
+    }
+}
