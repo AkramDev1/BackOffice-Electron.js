@@ -87,32 +87,40 @@ function validate(id) {
         "description": tr.querySelector(".description textarea").textContent,
         // "image": formData
     };
-    console.log("myDataObject =", myDataObject);
+    console.log("formData =", formData);
+    for (let a of formData) {
+        console.log("a", a)
+    }
+    formData.append("id", id);
+    formData.append("title", tr.querySelector(".title input").textContent);
+    formData.append("description", tr.querySelector(".description textarea").textContent);
 
     fetch(`http://localhost:4001/update_article`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "multipart/form-data",
-                // "Content-Type": "application/json",
+        method: 'PUT',
+        headers: {
+            // "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryIn312MOjBWdkffIM"
+            // "Content-Type": "multipart/form-data",
+            // "Content-Type": "application/json",
+            // withCredentials: true
+        },
+        // body: JSON.stringify({
+        //     id: id,
+        //     title: tr.querySelector(".title input").textContent,
+        //     description: tr.querySelector(".description textarea").textContent,
+        //     image: formData
+        // }),
+        body: formData
+    })
 
-                withCredentials: true
-            },
-            body: JSON.stringify({
-                    id: id,
-                    title: tr.querySelector(".title input").textContent,
-                    description: tr.querySelector(".description textarea").textContent,
-                    image: formData
-                })
-                // body: myDataObject
-        })
-        .then(() => {
-            output = ""
-            TBODY.innerHTML = "";
-            reload();
-        }).catch(e => {
-            console.log(e)
-        })
+    .then(() => {
+        output = ""
+        TBODY.innerHTML = "";
+        reload();
+    }).catch(e => {
+        console.log(e)
+    })
 }
+module.exports = validate
 
 //function changeTitle
 function changeTitle(value, id) {

@@ -1,6 +1,7 @@
 const URL = 'http://localhost:4001/';
 const URL_ARTICLES = `${URL}article`;
 const URL_IMAGES = `${URL}uploads`;
+// const axios = require('axios')
 var formData = new FormData();
 const TBODY = document.querySelector('tbody');
 let output = `<tr class="d-none visible">

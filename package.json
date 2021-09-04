@@ -9,6 +9,7 @@
         "start": "electron ."
     },
     "dependencies": {
+        "axios": "^0.21.3",
         "bcrypt": "^5.0.1",
         "datatables.net-dt": "^1.1.0",
         "mysql": "^2.18.1"

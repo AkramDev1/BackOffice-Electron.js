@@ -5,7 +5,7 @@ console.log("main working");
 const { app, BrowserWindow, ipcMain, Notification, Menu } = require('electron');
 const path = require('path');
 let db = require('./database');
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 let win;
 let winlogin;
