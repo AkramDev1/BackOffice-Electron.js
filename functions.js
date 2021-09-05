@@ -10,6 +10,7 @@ function reload() {
                 <td class="description"><div>${myElement.description}</div> <textarea class="d-none" name="" id="" cols="20" rows="10" onchange="changeDescription(this.value,${myElement.id_article})">${myElement.description}</textarea></td>
                 <td class="image">
                         <img src=${URL_IMAGES+'/'+myElement.image} class="image-${myElement.id_article}" alt="artile image ${myElement.id_article}" />
+                        <img src=${URL_IMAGES+'/'+myElement.image} class="d-none imageUpdated-${myElement.id_article}" alt="artile image ${myElement.id_article}" />
                         <input type="file" class="d-none file-${myElement.id_article}" name="data" onchange="changeImage(event,${myElement.id_article})">
                 </td>
                 <td>${myElement.creat_at}</td>
@@ -20,10 +21,10 @@ function reload() {
 
                 <div class="d-none visible-${myElement.id_article} deleteVisible-${myElement.id_article}">
                     <button type="button" class="btn btn-primary" onClick="validate(${myElement.id_article})"><i class="fas fa-check"></i></button>      
-                    <button onClick="deleteVisible(${myElement.id_article})" type="button" class="btn btn-secondary"><i class="fas fa-times-circle"></i></button>     
+                    <button onClick="cancel(${myElement.id_article})" type="button" class="btn btn-secondary"><i class="fas fa-times-circle"></i></button>     
                 </div>
 
-                 <button type="button" class="btn btn-danger" onClick="delete_article(${myElement.id_article})"> <i class="fas fa-trash-alt"></i> 
+                 <button type="button" class="btn btn-danger delete-${myElement.id_article}" onClick="delete_article(${myElement.id_article})"> <i class="fas fa-trash-alt"></i> 
             </button>
          
                 </td>   
@@ -40,9 +41,29 @@ function add() {
     document.querySelector(".visible").classList.toggle("d-none")
 }
 
-function deleteVisible(id) {
+function cancel(id) {
+    console.log();
     document.querySelector(`.deleteVisible-${id}`).classList.toggle("d-none")
     document.querySelector(`.btn-${id}`).classList.toggle("d-none")
+    document.querySelector(`.delete-${id}`).classList.toggle("d-none");
+    //to test
+    const tr = document.querySelector(`.tr-${id}`)
+    tr.querySelector(".title").firstChild.classList.toggle("d-none");
+    tr.querySelector(".title input").classList.toggle("d-none")
+    tr.querySelector(".description").firstChild.classList.toggle("d-none");
+    tr.querySelector(".description textarea").classList.toggle("d-none")
+    tr.querySelector(".image input").classList.toggle("d-none");
+    tr.querySelector(`.image .image-${id}`).classList.toggle("d-none")
+    tr.querySelector(`.image .imageUpdated-${id}`).classList.toggle("d-none")
+    fetch(`${URL_SINGLE_ARTICLE +"/"+ id}`, {
+            method: 'GET',
+            headers: {},
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            tr.querySelector(`.imageUpdated-${id}`).setAttribute("src", `${URL_IMAGES+'/'+data.image}`)
+        })
 }
 
 
@@ -65,17 +86,16 @@ function delete_article(id) {
 //function modify
 function modify(id) {
     const tr = document.querySelector(`.tr-${id}`)
-    tr.querySelector(".title").firstChild.classList.add("d-none");
-    tr.querySelector(".title input").classList.remove("d-none")
-
-    tr.querySelector(".description").firstChild.classList.add("d-none");
-    tr.querySelector(".description textarea").classList.remove("d-none")
-
-    tr.querySelector(".image input").classList.remove("d-none")
-
-    console.log("tr", tr);
+    tr.querySelector(".title").firstChild.classList.toggle("d-none");
+    tr.querySelector(".title input").classList.toggle("d-none")
+    tr.querySelector(".description").firstChild.classList.toggle("d-none");
+    tr.querySelector(".description textarea").classList.toggle("d-none")
+    tr.querySelector(".image input").classList.toggle("d-none");
+    tr.querySelector(`.image .image-${id}`).classList.toggle("d-none");
+    tr.querySelector(`.image .imageUpdated-${id}`).classList.toggle("d-none");
     document.querySelector(`.btn-${id}`).classList.toggle("d-none")
     document.querySelector(`.visible-${id}`).classList.toggle("d-none")
+    document.querySelector(`.delete-${id}`).classList.toggle("d-none");
 }
 
 //function validate
@@ -141,5 +161,5 @@ function changeImage(event, id) {
     console.log("formData", formData);
     console.log(event.target.files[0]);
     // tr.querySelector(".image input").textContent = event;
-    document.querySelector(`.image-${id}`).setAttribute("src", event.target.files[0].path)
+    document.querySelector(`.imageUpdated-${id}`).setAttribute("src", event.target.files[0].path)
 }

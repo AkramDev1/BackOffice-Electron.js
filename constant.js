@@ -1,5 +1,6 @@
 const URL = 'http://localhost:4001/';
 const URL_ARTICLES = `${URL}article`;
+const URL_SINGLE_ARTICLE = `${URL}single-article`;
 const URL_IMAGES = `${URL}uploads`;
 // const axios = require('axios')
 var formData = new FormData();
