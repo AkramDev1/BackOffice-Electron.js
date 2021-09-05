@@ -1,4 +1,6 @@
 //function add:
 function add() {
-    document.querySelector(".visible").classList.toggle("d-none")
+    console.log('test');
+    document.querySelector(".visible").classList.toggle("d-none");
+    document.querySelector("#add").classList.toggle("d-none")
 }

@@ -9,6 +9,11 @@ let output = `<tr class="d-none visible">
 <td><input type="text"></td>
 <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
 <td><input type="file"></td>
-<td><input type="date" disabled></td>
-<td>Actions</td>
+<td>${Date.now().getYear}</td>
+<td>
+<div>
+<button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>      
+<button type="button" class="btn btn-secondary"><i class="fas fa-times-circle"></i></button>     
+</div>
+</td>
 </tr> `;
