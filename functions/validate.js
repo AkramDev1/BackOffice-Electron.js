@@ -5,11 +5,12 @@ function validate(id) {
     formData.delete("id");
     formData.delete("title");
     formData.delete("description");
+    formData.delete("modify");
 
     formData.append("id", id);
     formData.append("title", tr.querySelector(".title input").value);
     formData.append("description", tr.querySelector(".description textarea").textContent);
-
+    formData.append("modify", Date.now());
     for (let a of formData) {
         console.log("formData", a)
     }
