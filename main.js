@@ -7,7 +7,7 @@ const path = require('path');
 let db = require('./database');
 const bcrypt = require("bcrypt");
 
-let win;
+let win, articleWin;
 let winlogin;
 
 
@@ -32,6 +32,22 @@ function createWindow() {
 }
 
 
+function createWindowArticle() {
+    console.log("test");
+    articleWin = new BrowserWindow({
+        height: 600,
+        width: 900,
+        webPreferences: {
+            webSecurity: false
+        }
+    });
+    articleWin.loadFile('detail/detail.html')
+
+    // Handle garbage collection
+    articleWin.on('close', function() {
+        articleWin = null;
+    });
+}
 // Create menu template
 const mainMenuTemplate = [
     // Each object is a dropdown
@@ -40,6 +56,12 @@ const mainMenuTemplate = [
         accelerator: process.platform == 'darwin' ? 'Command+q' : 'Ctrl+q',
         click() {
             app.quit();
+        }
+    },
+    {
+        label: 'article',
+        click() {
+            createWindowArticle();
         }
     }
 ];
@@ -67,8 +89,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-
-
 function loginWindow() {
     winlogin = new BrowserWindow({
         width: 800,
@@ -80,7 +100,6 @@ function loginWindow() {
 
     winlogin.loadFile('login/login.html')
 }
-
 
 
 app.whenReady().then(loginWindow)

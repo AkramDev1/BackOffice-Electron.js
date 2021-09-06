@@ -7,7 +7,7 @@ function reload() {
                 output += `
             <tr class="tr-${myElement.id_article}">
 
-                <td class="title"><div>${myElement.title}</div> <input type="text"  class="d-none" onchange="changeTitle(this.value,${myElement.id_article})" value="" /></td>
+                <td class="title"><a href="detail/detail.html" id="detail">${myElement.title}</a><input type="text"  class="d-none" onchange="changeTitle(this.value,${myElement.id_article})" value="" /></td>
 
                 <td class="description"><div>${myElement.description}</div> <textarea class="d-none" name="" id="" cols="20" rows="10" onchange="changeDescription(this.value,${myElement.id_article})">${myElement.description}</textarea></td>
 
