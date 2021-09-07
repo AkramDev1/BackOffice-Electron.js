@@ -27,3 +27,8 @@ button#valid {
 .d-nonne {
     display: none;
 }
+
+#detail {
+    text-decoration: none;
+    color: black;
+}

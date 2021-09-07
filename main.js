@@ -13,15 +13,15 @@ let winlogin;
 
 
 function createWindow(results) {
-    console.log('results', results);
+    console.log('results', results[0].id_user);
     // localStorage.setItem('id_user', results.id_user)
     win = new BrowserWindow({
         width: 800,
         height: 600,
     })
 
-    win.loadFile(`index.html?id=${results.id_user}`)
-
+    // win.loadFile("index.html")
+    win.loadURL(`file://${__dirname}/index.html?id=${results[0].id_user}`);
     // Quit app when closed
     win.on('closed', function() {
         app.quit();
@@ -132,7 +132,6 @@ function validatelogin(obj) {
         if (results.length > 0) {
             bcrypt.compare(password, results[0].password, (error, response) => {
                 if (results) {
-
                     createWindow(results)
                     win.show()
                     winlogin.close()

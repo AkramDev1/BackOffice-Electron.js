@@ -2,6 +2,10 @@ const URL = 'http://localhost:4001/';
 const URL_ARTICLES = `${URL}article`;
 const URL_SINGLE_ARTICLE = `${URL}single-article`;
 const URL_QUESTIONS = `${URL}question`;
+const URL_RESPONSES = `${URL}reponse`;
+const URL_RESPONSESQUESTION = `${URL}responsesToQuestion`;
+
+
 
 const URL_IMAGES = `${URL}uploads`;
 var formData = new FormData();
