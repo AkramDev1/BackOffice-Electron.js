@@ -2,13 +2,11 @@ function questions(_id) {
     fetch(`${URL_QUESTIONS +"/"+ _id}`, {
             method: 'GET',
             headers: {},
-
         })
         .then(res => res.json())
         .then(data => {
             let innerSection = "";
             data.forEach(element => {
-                console.log(element);
                 innerSection += `<div class="alert alert-secondary question-reponse-${element.id_quest} mt-3" role="alert">${element.question}</div>
                 <div class="reponses-${element.id_quest}"></div>
                     <div class="input-group responsesToQuestion-${element.id_quest} mb-3">

@@ -1,7 +1,5 @@
 //function responsesToQuestion:
 function responsesToQuestion(id_article, id_user, id_quest) {
-
-    console.log("message");
     fetch(`${URL_RESPONSESQUESTION}`, {
         method: "POST",
         headers: {

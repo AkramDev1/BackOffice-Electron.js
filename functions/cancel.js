@@ -1,9 +1,7 @@
 function cancel(id) {
-    console.log();
     document.querySelector(`.deleteVisible-${id}`).classList.toggle("d-none")
     document.querySelector(`.btn-${id}`).classList.toggle("d-none")
     document.querySelector(`.delete-${id}`).classList.toggle("d-none");
-    //to test
     const tr = document.querySelector(`.tr-${id}`)
     tr.querySelector(".title").firstChild.classList.toggle("d-none");
     tr.querySelector(".title input").classList.toggle("d-none")
@@ -15,7 +13,6 @@ function cancel(id) {
     fetch(`${URL_SINGLE_ARTICLE +"/"+ id}`, {
             method: 'GET',
             headers: {},
-
         })
         .then(res => res.json())
         .then(data => {

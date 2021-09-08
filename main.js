@@ -1,38 +1,26 @@
-console.log("main working");
-
-
-
 const { app, BrowserWindow, ipcMain, Notification, Menu } = require('electron');
 const path = require('path');
 let db = require('./database');
 const bcrypt = require("bcrypt");
-
 let win, articleWin;
 let winlogin;
 
-
-
 function createWindow(results) {
-    console.log('results', results[0].id_user);
-    // localStorage.setItem('id_user', results.id_user)
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
-    })
-
-    // win.loadFile("index.html")
+            width: 800,
+            height: 600,
+        })
+        // win.loadFile("index.html")
     win.loadURL(`file://${__dirname}/index.html?id=${results[0].id_user}`);
     // Quit app when closed
     win.on('closed', function() {
         app.quit();
     });
-
     // Build menu from template
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     // Insert menu
     Menu.setApplicationMenu(mainMenu);
 }
-
 
 function createWindowArticle() {
     console.log("test");
@@ -60,12 +48,6 @@ const mainMenuTemplate = [
             app.quit();
         }
     },
-    {
-        label: 'article',
-        click() {
-            createWindowArticle();
-        }
-    }
 ];
 
 // If OSX, add empty object to menu
@@ -90,7 +72,6 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
-
 function loginWindow() {
     winlogin = new BrowserWindow({
         width: 800,
@@ -99,20 +80,14 @@ function loginWindow() {
             preload: path.join(__dirname, 'login/js/login.js')
         }
     })
-
     winlogin.loadFile('login/login.html')
-
 }
-
-
 app.whenReady().then(loginWindow)
-
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
     }
 })
-
 app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow()
@@ -122,7 +97,6 @@ app.on('activate', () => {
 ipcMain.handle('login', (event, obj) => {
     validatelogin(obj)
 });
-
 
 function validatelogin(obj) {
     const { username, password } = obj

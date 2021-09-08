@@ -11,17 +11,12 @@ function modify(id) {
     document.querySelector(`.btn-${id}`).classList.toggle("d-none")
     document.querySelector(`.visible-${id}`).classList.toggle("d-none")
     document.querySelector(`.delete-${id}`).classList.toggle("d-none");
-    //
     fetch(`${URL_SINGLE_ARTICLE +"/"+ id}`, {
             method: 'GET',
             headers: {},
-
         })
         .then(res => res.json())
         .then(data => {
-            // tr.querySelector(`.imageUpdated-${id}`).setAttribute("src", `${URL_IMAGES+'/'+data.image}`)
-            console.log('data.title', data.title);
             tr.querySelector(".title input").value = data.title;
         })
-        //
 }
