@@ -9,7 +9,10 @@ function reponses(id_user, id_quest) {
             console.log("data", data);
             let innerQuestion = "";
             data.forEach(element => {
-                innerQuestion += `<h6> ${element.reponse}</h6>`;
+                innerQuestion += `
+                <div class="alert alert-success ml-5" role="alert">
+                ${element.reponse}
+                </div>`;
             });
             document.querySelector(`.reponses-${id_quest}`).innerHTML = innerQuestion;
         })

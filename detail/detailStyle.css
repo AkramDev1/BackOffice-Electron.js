@@ -1,0 +1,18 @@
+body {
+    display: flex;
+}
+
+.alert.alert-success.ml-5 {
+    margin-left: 68px;
+    padding: 5px;
+}
+
+header.headerDetail {
+    margin: 70px;
+    height: 120px;
+    width: 450px;
+}
+
+section.sectionDetail {
+    margin-right: 75px;
+}
