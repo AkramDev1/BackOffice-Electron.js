@@ -16,3 +16,14 @@ header.headerDetail {
 section.sectionDetail {
     margin-right: 75px;
 }
+
+.mb-3 {
+    width: 794px;
+    margin-left: 68px;
+    margin-bottom: 1rem!important;
+}
+
+section.sectionDetail {
+    margin-top: 52px;
+    margin-right: 75px;
+}

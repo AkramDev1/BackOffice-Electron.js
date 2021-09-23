@@ -100,7 +100,7 @@ ipcMain.handle('login', (event, obj) => {
 
 function validatelogin(obj) {
     const { username, password } = obj
-    const sql = "SELECT * FROM comptes WHERE username=? AND password=?"
+    const sql = "SELECT * FROM admins WHERE username=? AND password=?"
     db.query(sql, [username, password], (error, results, fields) => {
         if (error) { console.log(error); }
         if (results.length > 0) {

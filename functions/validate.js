@@ -9,7 +9,7 @@ function validate(id) {
     formData.append("title", tr.querySelector(".title input").value);
     formData.append("description", tr.querySelector(".description textarea").textContent);
     formData.append("modify", Date.now());
-    fetch(`http://localhost:4001/update_article`, {
+    fetch(`http://localhost:4002/update_article`, {
             method: 'PUT',
             headers: {},
             body: formData

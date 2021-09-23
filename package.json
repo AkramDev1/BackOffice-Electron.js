@@ -1,5 +1,5 @@
 {
-    "name": "hello_word",
+    "name": "CHU",
     "version": "1.0.0",
     "main": "main.js",
     "devDependencies": {
@@ -12,6 +12,7 @@
         "axios": "^0.21.3",
         "bcrypt": "^5.0.1",
         "datatables.net-dt": "^1.1.0",
+        "moment": "^2.29.1",
         "mysql": "^2.18.1"
     }
 }

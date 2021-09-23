@@ -2,7 +2,7 @@
 function validateNewArticle() {
     formData.append("added_title", document.querySelector(".visible .added_title").value);
     formData.append("added_description", document.querySelector(".visible .added_description").value);
-    fetch('http://localhost:4001/addNewArticle', {
+    fetch('http://localhost:4002/addNewArticle', {
             method: "POST",
             headers: {},
             body: formData
