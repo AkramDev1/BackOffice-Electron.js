@@ -23,7 +23,6 @@ function createWindow(results) {
 }
 
 function createWindowArticle() {
-    console.log("test");
     articleWin = new BrowserWindow({
         height: 600,
         width: 900,

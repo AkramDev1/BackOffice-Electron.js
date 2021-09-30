@@ -14,7 +14,7 @@ function responsesToQuestion(id_article, id_user, id_quest) {
     }).then((res) => {
         return res.json()
     }).then(data => {
-        console.log("data", data);
+        // console.log("data", data);
         document.querySelector(`.inputResponsesToQuestion-${id_quest}`).value = "";
         document.querySelector(`.reponses-${id_quest}`).innerHTML = "";
         //reload response:
